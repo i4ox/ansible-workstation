@@ -48,7 +48,6 @@ sudo reboot
     -u al \
     -i 192.168.0.73 \
     --ask-pass \
-    --ask-become-pass \
     --ask-vault-pass \
     --tags "system"
     playbook.yml
@@ -58,7 +57,6 @@ sudo reboot
     -u al \
     -i localhost \
     -e "ansible_connection=local" \
-    --ask-become-pass \
     --ask-valut-pass \
     --tags "system"
     playbook.yml

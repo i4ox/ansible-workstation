@@ -5,27 +5,12 @@
   until: result.rc == 0
   retries: 30
   delay: 10
-  become: yes
   
 - name: Upgrade the system
   command: zypper dup -y
-  become: yes
-
-- name: Check if a reboot is required
-  stat: path=/var/run/reboot-required get_md5=no
-  register: reboot_flag
-  failed_when: false
-  changed_when: false
-
-- name: Check for a reboot flag in OpenSUSE
-  command: "zypper patch --download-only --no-refresh"
-  register: patch_result
-  changed_when: false
-  failed_when: false
-  when: reboot_flag.stat.exists
 
 - name: Reboot the server
   reboot:
       reboot_timeout: 300
-    when: reboot_flag.stat.exists and ansible_connection != 'local'
+  when: ansible_connection != 'local'
   
