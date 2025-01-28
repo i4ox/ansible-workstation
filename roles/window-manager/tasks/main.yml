@@ -26,6 +26,9 @@
     dest: ~/.config/sxhkd/sxhkdrc
     mode: '0755'
 
+- name: Change shell to alacritty
+  command: "sid -i 's/urxvt/alacritty/'"
+
 - name: Create '.xinitrc' file
   copy:
     dest: ~/.xinitrc

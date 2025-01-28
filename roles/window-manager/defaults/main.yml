@@ -1,2 +1,2 @@
 ---
-window_manager_packages: bspwm sxhkd
+window_manager_packages: bspwm sxhkd alacritty
