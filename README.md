@@ -52,4 +52,14 @@ sudo reboot
     --ask-vault-pass \
     --tags "system"
     playbook.yml
+
+  # Or run locally
+  ansible-playbook \
+    -u al \
+    -i localhost \
+    -e "ansible_connection=local" \
+    --ask-become-pass \
+    --ask-valut-pass \
+    --tags "system"
+    playbook.yml
   ```
