@@ -1,3 +1,4 @@
 ---
 - name: Install Nvidia drivers
   command: "zypper --non-interactive in {{ nvidia_packages }} {{ nvidia_packages_32bit }}"
+  become: yes

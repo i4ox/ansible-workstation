@@ -6,3 +6,4 @@
     create: yes
   with_items:
     - "{{ blacklisted_modules }}"
+  become: yes

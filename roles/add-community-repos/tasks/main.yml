@@ -6,6 +6,7 @@
     repo: "http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/"
     state: present
     refresh: yes
+  become: yes
 
 - name: Add Nvidia repository if not present
   zypper_repository:
@@ -14,6 +15,7 @@
     repo: "https://download.nvidia.com/opensuse/tumbleweed"
     state: present
     refresh: yes
+  become: yes
 
 - name: Add Mozilla repository if not present
   zypper_repository:
@@ -22,3 +24,4 @@
     repo: "http://download.opensuse.org/repositories/mozilla/openSUSE_Tumbleweed/"
     state: present
     refresh: yes
+  become: yes

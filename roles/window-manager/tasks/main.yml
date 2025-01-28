@@ -1,30 +1,41 @@
 ---
 - name: Install the requirements for window manager
   command: "zypper --non-interactive install {{ window_manager_packages }}"
+  become: yes
 
 - name: Ensure bspwm configuration directory exists
   file:
     path: ~/.config/bspwm
     state: directory
     mode: '0755'
+  become: yes
+  become_user: "{{ ansible_user }}"
 
 - name: Install default 'bspwm' config
   copy:
     src: /usr/share/doc/packages/bspwm/examples/bspwmrc
     dest: ~/.config/bspwm/bspwmrc
+    owner: "{{ ansible_user }}"
     mode: '0755'
+  become: yes
+  become_user: "{{ ansible_user }}"
 
 - name: Ensure sxhkd configuration directory exists
   file:
     path: ~/.config/sxhkd
     state: directory
     mode: '0755'
+  become: yes
+  become_user: "{{ ansible_user }}"
 
 - name: Install default 'bspwm' config
   copy:
     src: /usr/share/doc/packages/bspwm/examples/sxhkdrc
     dest: ~/.config/sxhkd/sxhkdrc
+    owner: "{{ ansible_user }}"
     mode: '0755'
+  become: yes
+  become_user: "{{ ansible_user }}"
 
 - name: Change shell to alacritty
   command: "sid -i 's/urxvt/alacritty/' ~/.config/sxhkd/sxhkdrc"
@@ -35,4 +46,5 @@
     content: |
       exec sxhkd &
       exec bspwm
+    owner: "{{ ansible_user }}"
     mode: '0755'

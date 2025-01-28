@@ -5,12 +5,15 @@
   until: result.rc == 0
   retries: 30
   delay: 10
+  become: yes
   
 - name: Upgrade the system
   command: "zypper --non-interactive --gpg-auto-import-keys dup -y"
+  become: yes
 
 - name: Reboot the server
   reboot:
       reboot_timeout: 300
   when: ansible_connection != 'local'
+  become: yes
   

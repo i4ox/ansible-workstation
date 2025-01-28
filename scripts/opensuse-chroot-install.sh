@@ -51,7 +51,7 @@ sudo mount --make-slave /mnt/os/run
 
 # Base system
 sudo zypper --root /mnt/os ar --refresh https://download.opensuse.org/tumbleweed/repo/oss/ oss
-sudo zypper --root /mnt/os in kernel-default grub2-x86_64-efi sudo zypper bash zsh man vim shadow util-linux cryptsetup lvm2 xfsprogs ansible
+sudo zypper --root /mnt/os in kernel-default grub2-x86_64-efi sudo zypper git bash zsh man vim shadow util-linux cryptsetup lvm2 xfsprogs ansible
 sudo zypper --root /mnt/os in --no-recommends NetworkManager
 
 # Chroot
