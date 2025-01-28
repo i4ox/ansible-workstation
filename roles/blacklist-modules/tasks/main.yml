@@ -1,0 +1,8 @@
+---
+- name: Blacklist modules
+  lineinfile:
+    dest: "{{ blacklist_file }}"
+    line: "blacklist {{ item }}"
+    create: yes
+  with_items:
+    - "{{ blacklisted_modules }}"
