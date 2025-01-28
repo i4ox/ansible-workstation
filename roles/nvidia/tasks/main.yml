@@ -1,3 +1,3 @@
 ---
 - name: Install Nvidia drivers
-  command: "zypper in {{ nvidia_packages }} {{ nvidia_packages_32bit }}"
+  command: "zypper in {{ nvidia_packages }} {{ nvidia_packages_32bit }} -y"
