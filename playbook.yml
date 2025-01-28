@@ -12,8 +12,8 @@
   hosts: localhost
   vars:
     blacklisted_modules: [ nouveau ]
-    nvidia_packages: [ nvidia-drivers-G06 nvidia-gl-G06 nvidia-video-G06 nvidia-utils-G06 ]
-    nvidia_packages_32bit: [ nvidia-gl-G06-32bit nvidia-video-G06-32bit ]
+    nvidia_packages: nvidia-drivers-G06 nvidia-gl-G06 nvidia-video-G06 nvidia-utils-G06
+    nvidia_packages_32bit: nvidia-gl-G06-32bit nvidia-video-G06-32bit
   roles:
     - nvidia
     - blacklist-modules
