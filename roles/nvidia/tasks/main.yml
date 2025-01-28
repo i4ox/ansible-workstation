@@ -1,3 +1,3 @@
 ---
 - name: Install Nvidia drivers
-  command: "zypper --non-interactive --auto-agree-with-licenses in {{ nvidia_packages }} {{ nvidia_packages_32bit }}"
+  command: "zypper --non-interactive in {{ nvidia_packages }} {{ nvidia_packages_32bit }}"
