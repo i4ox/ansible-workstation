@@ -51,8 +51,11 @@ sudo mount --make-slave /mnt/os/run
 
 # Base system
 sudo zypper --root /mnt/os ar --refresh https://download.opensuse.org/tumbleweed/repo/oss/ oss
-sudo zypper --root /mnt/os in kernel-default grub2-x86_64-efi zypper bash zsh man vim shadow util-linux cryptsetup lvm2 xfsprogs ansible
+sudo zypper --root /mnt/os in kernel-default grub2-x86_64-efi sudo zypper bash zsh man vim shadow util-linux cryptsetup lvm2 xfsprogs ansible
 sudo zypper --root /mnt/os in --no-recommends NetworkManager
 
 # Chroot
-sudo chroot /mnt/os /bin/bash
+curl -LO https://raw.githubusercontent.com/i4ox/ansible-workstation/refs/heads/main/scripts/opensuse-chroot-configure.sh
+sudo mv opensuse-chroot-configure.sh /mnt/os
+sudo chmod +x /mnt/os/opensuse-chroot-configure.sh
+sudo chroot /mnt/os /bin/bash /opensuse-chroot-configure.sh

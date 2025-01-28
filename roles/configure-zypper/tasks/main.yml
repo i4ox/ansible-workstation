@@ -37,6 +37,6 @@
 - name: Ensure 'autoAgreeWithLicenses' is set to yes
   lineinfile:
     path: /etc/zypp/zypper.conf
-    regexp: '#  autoAgreeWithLicenses'
+    regexp: '# autoAgreeWithLicenses'
     line: 'autoAgreeWithLicenses = yes'
     create: yes

@@ -30,6 +30,6 @@
   copy:
     dest: ~/.xinitrc
     content: |
-      sxhkd &
-      bspwm
+      exec sxhkd &
+      exec bspwm
     mode: '0755'

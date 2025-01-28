@@ -19,9 +19,9 @@
     - nvidia
     - blacklist-modules
   tags:
-      - system
-      - hardware
-      - settings
+    - system
+    - hardware
+    - settings
 
 - name: Configure the X server
   hosts: localhost
