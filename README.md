@@ -31,3 +31,25 @@ sudo umount -l /mnt/os/dev/{/shm,/pts,}
 sudo umount -R /mnt/os
 sudo reboot
 ```
+
+## Execute Ansible playbook
+
+1. Install `sshpass` and log into the node one using SSH.
+2. Test the connection.
+  ```sh
+  ansible -m ping -i 192.168.0.73, -u al --ask-pass all
+
+  # If I use QEMU virtual machine
+  ansible -m ping -i localhost, -e "ansible_port=2222" --ask-pass all
+  ```
+3. Run the playbook.
+  ```sh
+  ansible-playbook \
+    -u al \
+    -i 192.168.0.73 \
+    --ask-pass \
+    --ask-become-pass \
+    --ask-vault-pass \
+    --tags "system"
+    playbook.yml
+  ```

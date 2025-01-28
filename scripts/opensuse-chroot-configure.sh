@@ -32,7 +32,7 @@ grub2-install --efi-directory=/boot/efi --target=x86_64-efi --bootloader-id=open
 
 # Create user
 USERNAME="al"
-useradd -m -G wheel,users -s /bin/zsh $USERNAME
+useradd -m -G users -s /bin/zsh $USERNAME
 passwd $USERNAME
 passwd -l root
 sed -i "s/root:\/bin\/bash/root:\/sbin\/nologin/" /etc/passwd
