@@ -1,0 +1,38 @@
+---
+- name: Install the requirements for window manager
+  zypper:
+    name: "{{ window_manager_packages }}"
+    state: present
+    update_cache: yes
+
+- name: Ensure bspwm configuration directory exists
+  file:
+    path: ~/.config/bspwm
+    state: directory
+    mode: '0755'
+
+- name: Install default 'bspwm' config
+  copy:
+    src: /usr/share/doc/packages/bspwm/examples/bspwmrc
+    dest: ~/.config/bspwm/bspwmrc
+    mode: '0755'
+
+- name: Ensure sxhkd configuration directory exists
+  file:
+    path: ~/.config/sxhkd
+    state: directory
+    mode: '0755'
+
+- name: Install default 'bspwm' config
+  copy:
+    src: /usr/share/doc/packages/bspwm/examples/sxhkdrc
+    dest: ~/.config/sxhkd/sxhkdrc
+    mode: '0755'
+
+- name: Create '.xinitrc' file
+  copy:
+    dest: ~/.xinitrc
+    content: |
+      sxhkd &
+      bspwm
+    mode: '0755'
