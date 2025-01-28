@@ -1,0 +1,27 @@
+---
+- name: Add Packman repository if not present
+  zypper_repository:
+    name: packman
+    description: Packman repository for additional software
+    repo: "http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/"
+    state: present
+    refresh: yes
+    autorefresh: yes
+
+- name: Add Nvidia repository if not present
+  zypper_repository:
+    name: NVIDIA
+    description: Nvidia repository for proprietary drivers
+    repo: "https://download.nvidia.com/opensuse/tumbleweed"
+    state: present
+    refresh: yes
+    autorefresh: yes
+
+- name: Add Mozilla repository if not present
+  zypper_repository:
+    name: Mozilla
+    description: Mozilla repository for latest Firefox and other software
+    repo: "http://download.opensuse.org/repositories/mozilla/openSUSE_Tumbleweed/"
+    state: present
+    refresh: yes
+    autorefresh: yes
