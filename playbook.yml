@@ -26,7 +26,7 @@
 - name: Configure the X server
   hosts: localhost
   vars:
-    xorg_packages: xorg-x11 xorg-x11-driver-input xorg-x11-driver-video xorg-x11-server xclip
+    xorg_packages: xorg-x11-driver-input xorg-x11-driver-video xorg-x11-server xclip xinit
     window_manager_packages: bspwm sxhkd
   roles:
     - xorg-server
