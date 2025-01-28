@@ -32,6 +32,7 @@ grub2-install --efi-directory=/boot/efi --target=x86_64-efi --bootloader-id=open
 
 # Create user
 USERNAME="al"
+groupadd wheel
 useradd -m -G wheel,users -s /bin/zsh $USERNAME
 echo 'Root password!'
 passwd

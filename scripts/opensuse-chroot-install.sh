@@ -59,3 +59,8 @@ curl -LO https://raw.githubusercontent.com/i4ox/ansible-workstation/refs/heads/m
 sudo mv opensuse-chroot-configure.sh /mnt/os
 sudo chmod +x /mnt/os/opensuse-chroot-configure.sh
 sudo chroot /mnt/os /bin/bash /opensuse-chroot-configure.sh
+
+# Umount
+sudo umount -l /mnt/os/dev/{/shm,/pts,}
+sudo umount -R /mnt/os
+echo 'Now you can reboot!'

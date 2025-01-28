@@ -21,15 +21,13 @@ This repo works in combination with my [dotfiles]() and my [utils]().
 > Don't forget change the names for partitions inside scripts.
 
 ```sh
+curl -LO https://raw.githubusercontent.com/i4ox/ansible-workstation/refs/heads/main/scripts/opensuse-chroot-install.sh
+sudo chroot +x opensuse-chroot-install.sh
+./opensuse-chroot-install.sh
+
+# Or
+
 curl -s https://raw.githubusercontent.com/i4ox/ansible-workstation/refs/heads/main/scripts/opensuse-chroot-install.sh | bash
-
-# Inside chroot
-curl -s https://raw.githubusercontent.com/i4ox/ansible-workstation/refs/heads/main/scripts/opensuse-chroot-configure.sh | bash
-
-# Outside chroot after exit
-sudo umount -l /mnt/os/dev/{/shm,/pts,}
-sudo umount -R /mnt/os
-sudo reboot
 ```
 
 ## Execute Ansible playbook
