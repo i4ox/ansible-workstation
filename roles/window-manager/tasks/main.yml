@@ -1,9 +1,6 @@
 ---
 - name: Install the requirements for window manager
-  zypper:
-    name: "{{ window_manager_packages }}"
-    state: present
-    update_cache: yes
+  command: "zypper --non-interactive install {{ window_manager_packages }}"
 
 - name: Ensure bspwm configuration directory exists
   file:
