@@ -1,0 +1,42 @@
+---
+- name: Ensure 'solver.onlyRequires' is set to true
+  lineinfile:
+    path: /etc/zypp/zypp.conf
+    regexp: '^solver\.onlyRequires'
+    line: 'solver.onlyRequires = true'
+    create: yes
+
+- name: Ensure 'solver.allowVendorChange' is set to false
+  lineinfile:
+    path: /etc/zypp/zypp.conf
+    regexp: '^solver\.allowVendorChange'
+    line: 'solver.allowVendorChange = false'
+    create: yes
+
+- name: Ensure 'solver.cleandepsOnRemove' is set to false
+  lineinfile:
+    path: /etc/zypp/zypp.conf
+    regexp: '^solver\.cleandepsOnRemove'
+    line: 'solver.cleandepsOnRemove = false'
+    create: yes
+
+- name: Ensure 'download.use_deltarpm' is set to true
+  lineinfile:
+    path: /etc/zypp/zypp.conf
+    regexp: '^download\.use_deltarpm'
+    line: 'download.use_deltarpm = true'
+    create: yes
+
+- name: Ensure 'download.max_concurrent_connections' is set to 10
+  lineinfile:
+    path: /etc/zypp/zypp.conf
+    regexp: '^download\.max_concurrent_connections'
+    line: 'download.max_concurrent_connections = 10'
+    create: yes
+
+- name: Ensure 'autoAgreeWithLicenses' is set to yes
+  lineinfile:
+    path: /etc/zypp/zypper.conf
+    regexp: '^autoAgreeWithLicenses'
+    line: 'autoAgreeWithLicenses = yes'
+    create: yes

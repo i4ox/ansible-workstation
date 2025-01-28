@@ -2,6 +2,7 @@
 - name: Configure zypper and upgrade system
   hosts: localhost
   roles:
+    - configure-zypper
     - add-community-repos
     - system-upgrade
   tags:
