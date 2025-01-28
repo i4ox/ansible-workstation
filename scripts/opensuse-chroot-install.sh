@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
 
-# Update LiveCD
+# Refresh zypper
 sudo zypper refresh
-sudo zypper update
 
 # Localization
 sudo zypper install glibc-locale glibc-i18ndata glibc-gconv-modules-extra
 sudo localedef -i en_US -f UTF-8 en_US.UTF-8
 
 # Partitions
-DISK="/dev/nvme0n1"
 sudo parted $DISK mklabel gpt
 sudo parted $DISK mkpart primary fat32 1MiB 1GiB
 sudo parted $DISK set 1 esp on
@@ -17,9 +15,9 @@ sudo parted $DISK mkpart primary xfs 1GiB 1.5GiB
 sudo parted $DISK mkpart primary xfs 1.5GiB 100%
 sudo parted $DISK print
 
-EFIP="/dev/nvme0n1p1"
-BOOTP="/dev/nvme0n1p2"
-ROOTP="/dev/nvme0n1p3"
+EFIP="${DISK}p1"
+BOOTP="${DISK}p2"
+ROOTP="${DISK}p3"
 sudo cryptsetup luksFormat $ROOTP
 sudo cryptsetup open $ROOTP lvm
 sudo pvcreate /dev/mapper/lvm

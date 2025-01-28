@@ -16,3 +16,8 @@ This repo works in combination with my [dotfiles]() and my [utils]().
   - I usually set up the encrypted LVM.
   - I don't create a root user, only a normal user, who will automatically be placed in the `sudo` group.
   - I only install the standard system utilities and the SSH server - Ansible will take care of everything.
+
+```sh
+export DISK="/dev/nvme0n1"
+curl -s https://raw.githubusercontent.com/i4ox/ansible-workstation/refs/heads/main/scripts/opensuse-chroot-install.sh | bash
+```
