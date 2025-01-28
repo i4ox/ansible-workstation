@@ -23,15 +23,12 @@
     - hardware
     - settings
 
-- name: Configure the X server
+- name: Configure the Gnome
   hosts: localhost
   vars:
-    xorg_packages: xorg-x11-driver-input xorg-x11-driver-video xorg-x11-server xclip xinit
-    window_manager_packages: bspwm sxhkd alacritty
-    ansible_user: al
+    gnome_packages: gnome-shell gdm gnome-control-center gnome-tweaks gnome-session-wayland xorg-x11-server wayland libinput
   roles:
-    - xorg-server
-    - window-manager
+    - gnome-shell
   tags:
     - system
     - settings

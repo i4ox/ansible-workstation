@@ -1,4 +1,0 @@
----
-- name: Install xorg packages
-  command: "zypper --non-interactive install {{ xorg_packages }}"
-  become: yes
