@@ -1,0 +1,8 @@
+---
+- name: Configure zypper
+  hosts: all
+  roles:
+    - system-upgrade
+  tags:
+    - system
+    - opensuse-upgrade
