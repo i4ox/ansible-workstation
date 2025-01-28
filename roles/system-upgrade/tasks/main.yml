@@ -1,13 +1,13 @@
 ---
-- name: Update zypper cache
-  command: zypper refresh
+- name: Update zypper cache (with automatic GPG key import)
+  command: "zypper --non-interactive --gpg-auto-import-keys refresh"
   register: result
   until: result.rc == 0
   retries: 30
   delay: 10
   
 - name: Upgrade the system
-  command: zypper dup -y
+  command: "zypper --non-interactive --gpg-auto-import-keys dup -y"
 
 - name: Reboot the server
   reboot:
