@@ -1,23 +1,52 @@
 # Ansible Workstation
 
+```Go
+❄️                  Setup / DWM                   ❄️
+---------------------------------------------------
+╭─ Distro          -> OpenSUSE Tumbleweed
+├─ Editor          -> NeoVim
+├─ Browser         -> Firefox / qutebrowser
+├─ Shell           -> zsh
+╰─ Process Viewer  -> btop
+ 
+╭─ Music Player    -> cmus
+├─ Compositor      -> picom
+├─ Notifications   -> dunst
+├─ Media Player    -> mpv
+╰─ File Manager    -> superfile
+
+╭─ WM              -> dwm
+├─ Terminal        -> st
+├─ App Laucher     -> dmenu
+├─ Theme           -> pywal
+╰─ Font            -> Iosevka NF
+
+╭─ Office toolkit  -> onlyoffice
+├─ Pdf viewer      -> zathura
+├─ Wallpapers      -> nitrogen
+├─ Screenshot tool -> flameshot
+╰─ System info     -> fastfetch
+```
+
 This repository aims to automating the setup of my OpenSUSE workstations using [Ansible](https://www.ansible.com/).
 
-This repo works in combination with my [dotfiles]() and my [utils]().
+This repo works in combination with my [dotfiles](https://github.com/i4ox/dotfiles) and my [utils](https://github.com/i4ox/utils).
 
 ## Basic OpenSUSE installation
 
 1. Download a `LiveCD` ISO image from the [official sources](https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-XFCE-Live-x86_64-Current.iso).
 2. Create a bootable USB drive.
 3. Install OpenSUSE
-  > [!INFORMATION]
+  > **Warning**
+  > 
   > The OpenSUSE installation itself can be automated using [AutoYaST](https://doc.opensuse.org/projects/autoyast/).
 
   - I install OpenSUSE with chroot and build script.
   - I usually set up the encrypted LVM.
-  - I don't create a root user, only a normal user, who will automatically be placed in the `sudo` group.
   - I only install the standard system utilities and the SSH server - Ansible will take care of everything.
 
-> [!INFORMATION]
+> **Warning**
+> 
 > Don't forget change the names for partitions inside scripts.
 
 ```sh
@@ -32,30 +61,16 @@ curl -s https://raw.githubusercontent.com/i4ox/ansible-workstation/refs/heads/ma
 
 ## Execute Ansible playbook
 
-1. Install `sshpass` and log into the node one using SSH.
-2. Test the connection.
-  ```sh
-  ansible -m ping -i 192.168.0.73, -u al --ask-pass all
+I run ansible only locally, because I can.
 
-  # If I use QEMU virtual machine
-  ansible -m ping -i localhost, -e "ansible_port=2222" --ask-pass all
-  ```
-3. Run the playbook.
-  ```sh
-  ansible-playbook \
-    -u al \
-    -i 192.168.0.73 \
-    --ask-pass \
-    --ask-vault-pass \
-    --tags "system"
-    playbook.yml
+```sh
+ansible-playbook -u al -i localhost -e "ansible_connection=local" --tags "system" playbook.yml
+```
 
-  # Or run locally
-  ansible-playbook \
-    -u al \
-    -i localhost \
-    -e "ansible_connection=local" \
-    --ask-valut-pass \
-    --tags "system"
-    playbook.yml
-  ```
+### Tags
+
+You can run specific group of tasks with tags:
+
+- *system*: configure the system(zypper, drivers, fonts, wm and etc)
+- *hardware*: install or update the hardware
+- *opensuse-upgrade*: Upgrade the system

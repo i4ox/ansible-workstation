@@ -21,14 +21,13 @@
   tags:
     - system
     - hardware
-    - settings
 
-- name: Configure the Gnome
+- name: Install X11 server
   hosts: localhost
   vars:
-    gnome_packages: gnome-shell gdm gnome-control-center gnome-tweaks gnome-session-wayland xorg-x11-server wayland libinput
+    xorg_packages: xsel xclip xprop xinit xdotool xautolock xsettingsd arandr dbus-1 xorg-x11-server xorg-x11-driver-input xorg-x11-driver-video
   roles:
-    - gnome-shell
+    - xorg-server
   tags:
     - system
-    - settings
+    - packages

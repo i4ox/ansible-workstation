@@ -1,0 +1,2 @@
+---
+xorg_packages: xsel xclip xprop xinit xdotool xautolock xsettingsd arandr dbus-1 xorg-x11-server xorg-x11-driver-input xorg-x11-driver-video
